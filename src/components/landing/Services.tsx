@@ -55,6 +55,20 @@ const STATIC_SERVICES: ServiceData[] = [
     subtitle: 'Personalized Treatment',
     description: 'Focused homeopathic solutions to help reduce recurring headaches, sensitivity, and migraine-related discomfort effectively.'
   }
+   ,
+   {
+    id: '8',
+    name: 'PCOD',
+    subtitle: 'Hormonal Balance',
+    description: 'Comprehensive homeopathic care designed to support hormonal balance, reduce symptoms, and improve overall well-being naturally.'
+   },
+   {
+    id: '9',
+    name:'Liver Disorders',
+    subtitle: 'Gentle Support',
+    description: 'Homeopathic treatment aimed at supporting liver function, reducing symptoms, and promoting natural healing for various liver conditions.'
+   }
+
 ];
 
 export default function Services() {

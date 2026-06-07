@@ -36,7 +36,7 @@ export default function Footer() {
               <a href="https://facebook.com/drskbhatt" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Facebook">
                 <FacebookIcon size={18} />
               </a>
-              <a href="https://instagram.com/drskbhatt" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Instagram">
+              <a href="https://www.instagram.com/dr_skbhatt?utm_source=qr" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Instagram">
                 <InstagramIcon size={18} />
               </a>
               <a href="https://linkedin.com/in/drskbhatt" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="LinkedIn">

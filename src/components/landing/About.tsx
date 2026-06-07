@@ -31,11 +31,11 @@ export default function About() {
                 ))}
               </div>
               <div className="about-exp-badge">
-                <strong>15+</strong>
+                <strong>26+</strong>
                 <span>Years Exp.</span>
               </div>
             </div>
-          </div>
+          </div> 
 
           {/* Content Side */}
           <div className="about-content animate-fade-in-up">
@@ -47,7 +47,7 @@ export default function About() {
               clinical excellence in restoring wellness through safe, 
               holistic, and natural healing. With a patient-first approach 
               and personalized, result-oriented treatments, he has built a 
-              trusted reputation for helping thousands of individuals achieve lasting well-being with an impressive 85% success rate.
+              trusted reputation for helping thousands of individuals achieve lasting well-being with an impressive 90% success rate.
             </p>
 
             <p className="about-description">
@@ -58,30 +58,11 @@ export default function About() {
               <h4>Qualifications</h4>
               <div className="about-credential-item">
                 <GraduationCap size={16} />
-                <span>MBBS — All India Institute of Medical Sciences (AIIMS), New Delhi</span>
-              </div>
-              <div className="about-credential-item">
-                <GraduationCap size={16} />
-                <span>MD (Cardiology) — PGIMER, Chandigarh</span>
+                <span>BHMS — University of Lucknow</span>
               </div>
               <div className="about-credential-item">
                 <Globe size={16} />
-                <span>Fellowship in Interventional Cardiology — Mount Sinai Hospital, USA</span>
-              </div>
-            </div>
-
-            <div className="about-achievements">
-              <div className="about-achievement">
-                <ShieldCheck size={16} />
-                Board Certified
-              </div>
-              <div className="about-achievement">
-                <Award size={16} />
-                International Fellowship
-              </div>
-              <div className="about-achievement">
-                <BookOpen size={16} />
-                40+ Research Papers
+                <span>Gold Medalist in Homeopathy — University of Lucknow</span>
               </div>
             </div>
           </div>

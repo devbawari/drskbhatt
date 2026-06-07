@@ -10,7 +10,7 @@ export default function Hero() {
   const yearsRef = useCounter(26, 2000);
   const patientsRef = useCounter(100000, 1000);
   const ratingRef = useCounter(4, 1000);
-  const successRef = useCounter(98, 2000);
+  const successRef = useCounter(90, 2000);
 
   return (
     <section className="hero" id="home">
