@@ -1,0 +1,195 @@
+/* ══════════════════════════════════════════════════════
+   STEP 1 — APPOINTMENT TYPE SELECTION
+   Two large cards for in-clinic vs online
+   ══════════════════════════════════════════════════════ */
+
+.step-type {
+  padding: var(--space-4) 0;
+}
+
+.step-type-heading {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.step-type-heading h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.step-type-heading p {
+  color: var(--color-text-light);
+  font-size: var(--text-base);
+}
+
+.step-type-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.type-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.type-card:hover {
+  border-color: var(--color-primary-light);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.type-card.selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.2), var(--shadow-lg);
+  background: linear-gradient(135deg, rgba(var(--color-accent-rgb), 0.03), rgba(var(--color-primary-rgb), 0.03));
+}
+
+.type-card-check {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-spring);
+}
+
+.type-card.selected .type-card-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.type-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.type-card-icon.clinic {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+}
+
+.type-card-icon.online {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3B82F6;
+}
+
+.type-card.selected .type-card-icon.clinic {
+  background: var(--color-primary);
+  color: white;
+}
+
+.type-card.selected .type-card-icon.online {
+  background: #3B82F6;
+  color: white;
+}
+
+.type-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.type-card-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  line-height: var(--leading-relaxed);
+}
+
+.type-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.type-card-meta-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.type-card-meta-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+}
+
+.type-card-price {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: var(--space-2);
+}
+
+.type-card.selected .type-card-price {
+  color: var(--color-accent-dark);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .step-type-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .type-card {
+    padding: var(--space-6) var(--space-4);
+    flex-direction: row;
+    text-align: left;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .type-card-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .type-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .type-card-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .type-card-price {
+    font-size: var(--text-xl);
+  }
+}

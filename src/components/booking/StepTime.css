@@ -1,0 +1,172 @@
+/* ══════════════════════════════════════════════════════
+   STEP 3 — TIME SLOT SELECTION
+   Grid of time slots grouped by period
+   ══════════════════════════════════════════════════════ */
+
+.step-time {
+  padding: var(--space-4) 0;
+}
+
+.step-time-heading {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.step-time-heading h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.step-time-heading p {
+  color: var(--color-text-light);
+  font-size: var(--text-base);
+}
+
+.step-time-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Period Groups ── */
+.time-period {
+  margin-bottom: var(--space-6);
+}
+
+.time-period:last-child {
+  margin-bottom: 0;
+}
+
+.time-period-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.time-period-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-period-icon.morning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+}
+
+.time-period-icon.afternoon {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3B82F6;
+}
+
+.time-period-icon.evening {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8B5CF6;
+}
+
+.time-period-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.time-period-range {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ── Time Slots Grid ── */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.time-slot {
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  position: relative;
+}
+
+.time-slot:hover:not(.booked):not(.selected) {
+  border-color: var(--color-primary-light);
+  background: rgba(var(--color-primary-rgb), 0.04);
+}
+
+.time-slot.selected {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
+  font-weight: 600;
+}
+
+.time-slot.booked {
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  border-color: var(--color-border-light);
+  cursor: not-allowed;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.time-slot.booked::after {
+  content: 'Booked';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 6px;
+  background: var(--color-error);
+  color: white;
+  border-radius: 0 0 var(--radius-sm) 0;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .time-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .time-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .time-slot {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .time-period-header {
+    margin-bottom: var(--space-2);
+  }
+}

@@ -1,0 +1,159 @@
+/* ══════════════════════════════════════════════════════
+   STEP 4 — PATIENT DETAILS FORM
+   Form fields with validation styling
+   ══════════════════════════════════════════════════════ */
+
+.step-details {
+  padding: var(--space-4) 0;
+}
+
+.step-details-heading {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.step-details-heading h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.step-details-heading p {
+  color: var(--color-text-light);
+  font-size: var(--text-base);
+}
+
+/* ── Form Layout ── */
+.details-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.details-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.details-form-group {
+  margin-bottom: var(--space-5);
+}
+
+.details-form-group label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.details-form-group label .required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.details-form-group input,
+.details-form-group select,
+.details-form-group textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  outline: none;
+  font-family: var(--font-body);
+}
+
+.details-form-group input:focus,
+.details-form-group select:focus,
+.details-form-group textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.details-form-group input::placeholder,
+.details-form-group textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.details-form-group input.error,
+.details-form-group select.error,
+.details-form-group textarea.error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.details-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.details-form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+
+.field-error {
+  font-size: var(--text-sm);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ── Terms Checkbox ── */
+.terms-group {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-2);
+}
+
+.terms-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-xs);
+  border: 2px solid var(--color-border-dark);
+  background: var(--color-surface);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+}
+
+.terms-checkbox.error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.terms-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  cursor: pointer;
+}
+
+.terms-label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .details-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

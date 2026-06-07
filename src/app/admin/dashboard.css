@@ -1,0 +1,316 @@
+/* ══════════════════════════════════════════════════════
+   ADMIN DASHBOARD
+   ══════════════════════════════════════════════════════ */
+
+.dashboardHeader {
+  margin-bottom: var(--space-8);
+}
+
+.dashboardGreeting {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--admin-text);
+  margin-bottom: var(--space-1);
+}
+
+.dashboardDate {
+  font-size: var(--text-sm);
+  color: var(--admin-text-muted);
+}
+
+/* ── Stats Cards ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.statCard {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  transition: all var(--transition-base);
+}
+
+.statCard:hover {
+  border-color: var(--admin-border-light);
+  transform: translateY(-2px);
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statIcon.blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+}
+
+.statIcon.yellow {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--admin-warning);
+}
+
+.statIcon.green {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--admin-success);
+}
+
+.statIcon.purple {
+  background: rgba(var(--admin-primary-rgb), 0.15);
+  color: var(--admin-primary-light);
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--admin-text);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.statLabel {
+  font-size: var(--text-sm);
+  color: var(--admin-text-muted);
+}
+
+/* ── Dashboard Sections ── */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.dashboardSection {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.sectionTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--admin-text);
+}
+
+.sectionViewAll {
+  font-size: var(--text-sm);
+  color: var(--admin-primary-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.sectionViewAll:hover {
+  color: var(--admin-primary);
+}
+
+/* ── Timeline ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.timelineItem:hover {
+  background: var(--admin-surface-hover);
+}
+
+.timelineTime {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  min-width: 100px;
+  white-space: nowrap;
+}
+
+.timelineDot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: var(--radius-full);
+  background: var(--admin-primary);
+}
+
+.timelineDot.confirmed {
+  background: var(--admin-success);
+}
+
+.timelineDot.pending {
+  background: var(--admin-warning);
+}
+
+.timelineDot.completed {
+  background: var(--admin-primary);
+}
+
+.timelineContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.timelinePatient {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--admin-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timelineMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: 2px;
+}
+
+/* ── Recent Bookings Table ── */
+.recentTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recentTable th {
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  padding: var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.recentTable td {
+  padding: var(--space-3) var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--admin-text-secondary);
+  border-bottom: 1px solid var(--admin-border);
+  vertical-align: middle;
+}
+
+.recentTable tr:last-child td {
+  border-bottom: none;
+}
+
+.recentTable tr:hover td {
+  background: var(--admin-surface-hover);
+}
+
+.recentPatientName {
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.recentActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.actionBtn {
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+  font-family: var(--font-body);
+}
+
+.actionBtn.confirm {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--admin-success);
+}
+
+.actionBtn.confirm:hover {
+  background: var(--admin-success);
+  color: white;
+}
+
+.actionBtn.reject {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--admin-danger);
+}
+
+.actionBtn.reject:hover {
+  background: var(--admin-danger);
+  color: white;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboardGreeting {
+    font-size: var(--text-2xl);
+  }
+
+  .statCard {
+    padding: var(--space-4);
+  }
+
+  .dashboardSection {
+    padding: var(--space-4);
+  }
+
+  .recentTable th:nth-child(3),
+  .recentTable td:nth-child(3) {
+    display: none;
+  }
+
+  .timelineTime {
+    min-width: 75px;
+    font-size: var(--text-xs);
+  }
+}
