@@ -156,46 +156,7 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
-        <div className="navbar-mobile-cta" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {isLoggedIn ? (
-            <>
-              <Link
-                href={userRole === 'doctor' || userRole === 'admin' ? '/admin' : '/dashboard'}
-                className="btn btn-primary btn-lg"
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-                onClick={() => setMobileOpen(false)}
-              >
-                <LayoutDashboard size={18} style={{ marginRight: '8px' }}/> Dashboard
-              </Link>
-              <button
-                className="btn btn-outline btn-lg"
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-                onClick={() => { signout(); setMobileOpen(false); }}
-              >
-                <LogOut size={18} style={{ marginRight: '8px' }}/> Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/auth"
-                className="btn btn-ghost btn-lg"
-                style={{ width: '100%', color: 'var(--color-text-secondary)' }}
-                onClick={() => setMobileOpen(false)}
-              >
-                Admin Login
-              </Link>
-              <Link
-                href="/booking"
-                className="btn btn-accent btn-lg"
-                style={{ width: '100%' }}
-                onClick={() => setMobileOpen(false)}
-              >
-                Book Appointment
-              </Link>
-            </>
-          )}
-        </div>
+
       </div>
     </nav>
   );
