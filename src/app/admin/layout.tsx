@@ -116,7 +116,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               >
                 <Icon size={18} />
                 {item.label}
-                {item.badge > 0 && <span className="admin-nav-badge-dot" />}
+                {(item.badge ?? 0) > 0 && <span className="admin-nav-badge-dot" />}
               </Link>
             );
           })}
