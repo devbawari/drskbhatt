@@ -142,9 +142,6 @@ export default function TelehealthRoom({ roomUrl, appointmentId, isDoctor }: { r
       co = DailyIframe.createCallObject({
         videoSource: true,
         audioSource: true,
-        dailyConfig: {
-          experimentalChromeVideoMuteLightOff: true,
-        }
       });
       setCallObject(co);
     });
