@@ -76,15 +76,25 @@ export default function Footer() {
             <h4>Contact Us</h4>
             <div className="footer-contact-item">
               <Phone size={16} />
-              <span>+91 98765 43210</span>
+              <span>+91 8808080088</span>
             </div>
             <div className="footer-contact-item">
               <Mail size={16} />
-              <span>dr.skbhatt@vardaanclinic.com</span>
+              <span>drskbhatt@gmail.com</span>
             </div>
-            <div className="footer-contact-item">
-              <MapPin size={16} />
-              <span>302, Harmony Tower, Andheri West, Mumbai, Maharashtra 400058</span>
+            <div className="footer-contact-item" style={{ alignItems: 'flex-start' }}>
+              <MapPin size={16} style={{ marginTop: '4px' }} />
+              <div>
+                <strong style={{ display: 'block', color: 'var(--color-accent)', fontSize: '13px' }}>Morning Clinic (10:30AM-1:30PM)</strong>
+                <span style={{ fontSize: '13px' }}>UGF-5, Sector-F, LDA Colony, Parag Dairy Road</span>
+              </div>
+            </div>
+            <div className="footer-contact-item" style={{ alignItems: 'flex-start' }}>
+              <MapPin size={16} style={{ marginTop: '4px' }} />
+              <div>
+                <strong style={{ display: 'block', color: 'var(--color-accent)', fontSize: '13px' }}>Evening Clinic (6:00PM-9:00PM)</strong>
+                <span style={{ fontSize: '13px' }}>UGF- 8, sector -k1 smriti plaza, Ashiyana, Lucknow, UP 226012</span>
+              </div>
             </div>
           </div>
         </div>

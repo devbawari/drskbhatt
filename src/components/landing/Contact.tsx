@@ -76,20 +76,20 @@ export default function Contact() {
                 <MapPin size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Clinic Address</h4>
-                <p>UGF- 8,sector -k1 smriti plaza, Ashiyana<br />Lucknow, Uttar Pradesh 226012</p>
+                <h4>Morning Clinic</h4>
+                <p>UGF-5, Sector-F, LDA Colony, Parag Dairy Road<br />Lucknow, Uttar Pradesh 226012</p>
+                <p style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, marginTop: '6px' }}>Timing: 10:30 AM - 1:30 PM (Mon-Sat)</p>
               </div>
             </div>
 
             <div className="contact-info-card">
               <div className="contact-info-icon">
-                <Clock size={22} />
+                <MapPin size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Working Hours</h4>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 10:00 AM - 2:00 PM</p>
-                <p style={{ color: 'var(--color-error)' }}>Sunday: Closed</p>
+                <h4>Evening Clinic</h4>
+                <p>UGF- 8, sector -k1 smriti plaza, Ashiyana<br />Lucknow, Uttar Pradesh 226012</p>
+                <p style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, marginTop: '6px' }}>Timing: 6:00 PM - 9:00 PM (Mon-Sat)</p>
               </div>
             </div>
 
