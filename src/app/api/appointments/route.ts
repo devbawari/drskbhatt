@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         patient_name: data.patientInfo?.fullName || user.email?.split('@')[0] || 'Unknown',
         patient_email: data.patientInfo?.email || user.email || 'unknown@example.com',
         patient_phone: data.patientInfo?.phone || null,
-        patient_dob: data.patientInfo?.age ? new Date(new Date().setFullYear(new Date().getFullYear() - data.patientInfo.age)).toISOString().split('T')[0] : null,
+        patient_dob: data.patientInfo?.age ? `${new Date().getFullYear() - data.patientInfo.age}-01-01` : null,
       })
       .select('id')
       .single();

@@ -25,7 +25,13 @@ export default async function AdminDashboard() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
-  const todayStrYMD = todayDate.toISOString().split('T')[0];
+  const year = todayDate.getFullYear();
+  const month = String(todayDate.getMonth() + 1).padStart(2, '0');
+  const day = String(todayDate.getDate()).padStart(2, '0');
+  const todayStrYMD = `${year}-${month}-${day}`;
+
+  const startOfDay = new Date(year, todayDate.getMonth(), todayDate.getDate(), 0, 0, 0);
+  const endOfDay = new Date(year, todayDate.getMonth(), todayDate.getDate(), 23, 59, 59, 999);
 
   // Fetch stats concurrently
   const [
@@ -36,21 +42,25 @@ export default async function AdminDashboard() {
   ] = await Promise.all([
     adminClient.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'patient'),
     adminClient.from('appointments').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
-    adminClient.from('appointments').select('*', { count: 'exact', head: true }).eq('date', todayStrYMD).in('status', ['confirmed', 'pending']),
+    adminClient.from('appointments').select('*', { count: 'exact', head: true })
+      .gte('scheduled_at', startOfDay.toISOString())
+      .lte('scheduled_at', endOfDay.toISOString())
+      .in('status', ['confirmed', 'pending']),
     adminClient.from('messages').select('*', { count: 'exact', head: true }).is('read_at', null).eq('recipient_id', user.id)
   ]);
 
   // Fetch today's appointments
   const { data: todayAppointments } = await adminClient
     .from('appointments')
-    .select('*, patient:profiles!patient_id(full_name)')
-    .eq('date', todayStrYMD)
-    .order('start_time', { ascending: true });
+    .select('*')
+    .gte('scheduled_at', startOfDay.toISOString())
+    .lte('scheduled_at', endOfDay.toISOString())
+    .order('scheduled_at', { ascending: true });
 
   // Fetch recent bookings (pending)
   const { data: recentBookings } = await adminClient
     .from('appointments')
-    .select('*, patient:profiles!patient_id(full_name)')
+    .select('*')
     .eq('status', 'pending')
     .order('created_at', { ascending: false })
     .limit(5);
@@ -106,11 +116,13 @@ export default async function AdminDashboard() {
             ) : (
               todayAppointments.map((apt: any) => (
                 <div key={apt.id} className={`admin-timeline-item ${apt.status}`}>
-                  <div className="admin-timeline-time">{apt.start_time}</div>
+                  <div className="admin-timeline-time">
+                    {new Date(apt.scheduled_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' })}
+                  </div>
                   <div className="admin-timeline-info">
-                    <div className="admin-timeline-name">{apt.patient?.full_name || 'Unknown'}</div>
+                    <div className="admin-timeline-name">{apt.patient_name || 'Unknown'}</div>
                     <div className="admin-timeline-meta">
-                      {apt.type === 'online' ? <><Video size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />Video Call</> : <><MapPin size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />In-Clinic</>}
+                      {apt.visit_type === 'virtual' ? <><Video size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />Video Call</> : <><MapPin size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />In-Clinic</>}
                       {apt.reason ? ` · ${apt.reason}` : ''}
                     </div>
                   </div>
@@ -131,13 +143,13 @@ export default async function AdminDashboard() {
               recentBookings.map((b: any) => (
                 <div key={b.id} style={{ padding: '12px 16px', borderBottom: '1px solid var(--admin-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                   <div>
-                    <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--admin-text)' }}>{b.patient?.full_name || 'Unknown'}</div>
+                    <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--admin-text)' }}>{b.patient_name || 'Unknown'}</div>
                     <div style={{ fontSize: '12px', color: 'var(--admin-text-muted)' }}>
-                      {new Date(b.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })} · {b.start_time} · <span className={`admin-badge admin-badge-${b.type}`}>{b.type}</span>
+                      {new Date(b.scheduled_at).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'Asia/Kolkata' })} · {new Date(b.scheduled_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' })} · <span className={`admin-badge admin-badge-${b.visit_type}`}>{b.visit_type}</span>
                     </div>
                   </div>
                   <div className="admin-table-actions">
-                    <span className="admin-badge admin-badge-pending">Pending</span>
+                    <span className="admin-badge admin-badge-pending">{b.status}</span>
                   </div>
                 </div>
               ))

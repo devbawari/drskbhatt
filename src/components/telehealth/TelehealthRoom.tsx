@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { DailyProvider, useLocalSessionId, useParticipantIds, useVideoTrack, useAudioTrack, useDaily } from '@daily-co/daily-react';
+import { DailyProvider, useLocalSessionId, useParticipantIds, useVideoTrack, useAudioTrack, useDaily, DailyAudio } from '@daily-co/daily-react';
 import type { DailyCall } from '@daily-co/daily-js';
 import { Mic, MicOff, Video as VideoIcon, VideoOff, PhoneOff } from 'lucide-react';
 import { endTelehealthSession } from '@/app/admin/actions';
@@ -17,19 +17,17 @@ function TelehealthCall({ appointmentId, isDoctor }: { appointmentId: string, is
   const localVideo = useVideoTrack(localSessionId);
   const localAudio = useAudioTrack(localSessionId);
   
-  const [isMicMuted, setIsMicMuted] = useState(false);
-  const [isCamMuted, setIsCamMuted] = useState(false);
+  const isMicMuted = localAudio.isOff;
+  const isCamMuted = localVideo.isOff;
 
   const toggleMic = useCallback(() => {
     if (!daily) return;
-    daily.setLocalAudio(!isMicMuted);
-    setIsMicMuted(!isMicMuted);
+    daily.setLocalAudio(isMicMuted);
   }, [daily, isMicMuted]);
 
   const toggleCam = useCallback(() => {
     if (!daily) return;
-    daily.setLocalVideo(!isCamMuted);
-    setIsCamMuted(!isCamMuted);
+    daily.setLocalVideo(isCamMuted);
   }, [daily, isCamMuted]);
 
   const leaveCall = useCallback(async () => {
@@ -45,7 +43,6 @@ function TelehealthCall({ appointmentId, isDoctor }: { appointmentId: string, is
   // Video render component
   const RemoteParticipant = ({ id }: { id: string }) => {
     const videoState = useVideoTrack(id);
-    const audioState = useAudioTrack(id);
     
     // Attach tracks
     useEffect(() => {
@@ -53,18 +50,10 @@ function TelehealthCall({ appointmentId, isDoctor }: { appointmentId: string, is
       if (videoEl && videoState.track) {
         videoEl.srcObject = new MediaStream([videoState.track]);
       }
-      
-      const audioEl = document.getElementById(`audio-${id}`) as HTMLAudioElement;
-      if (audioEl && audioState.track) {
-        audioEl.srcObject = new MediaStream([audioState.track]);
-      }
-    }, [id, videoState.track, audioState.track]);
+    }, [id, videoState.track]);
 
     return (
-      <>
-        <video id={`video-${id}`} autoPlay playsInline className="remote-video" />
-        <audio id={`audio-${id}`} autoPlay />
-      </>
+      <video id={`video-${id}`} autoPlay playsInline className="remote-video" />
     );
   };
 
@@ -125,9 +114,11 @@ export default function TelehealthRoom({ roomUrl, appointmentId, isDoctor }: { r
   useEffect(() => {
     if (!roomUrl) return;
 
-    let co: DailyCall;
+    let isMounted = true;
+    let co: DailyCall | null = null;
 
     import('@daily-co/daily-js').then(async (module) => {
+      if (!isMounted) return;
       const DailyIframe = module.default;
       
       // If an instance already exists (e.g. from StrictMode double-mount), destroy it first
@@ -137,14 +128,21 @@ export default function TelehealthRoom({ roomUrl, appointmentId, isDoctor }: { r
       }
 
       co = DailyIframe.createCallObject({
-        videoSource: true,
         audioSource: true,
+        videoSource: true,
       });
-      setCallObject(co);
+      if (isMounted) {
+        setCallObject(co);
+      } else {
+        co.destroy();
+      }
     });
 
     return () => {
-      if (co) co.destroy();
+      isMounted = false;
+      if (co) {
+        co.destroy();
+      }
     };
   }, [roomUrl]);
 
@@ -181,6 +179,7 @@ export default function TelehealthRoom({ roomUrl, appointmentId, isDoctor }: { r
 
   return (
     <DailyProvider callObject={callObject}>
+      <DailyAudio />
       <TelehealthCall appointmentId={appointmentId} isDoctor={isDoctor} />
     </DailyProvider>
   );

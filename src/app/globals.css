@@ -140,22 +140,22 @@
   --z-toast: 500;
 
   /* ══ ADMIN PANEL THEME ══ */
-  --admin-bg: #0B1120;
-  --admin-bg-alt: #0F172A;
-  --admin-surface: #1E293B;
-  --admin-surface-hover: #334155;
-  --admin-border: #334155;
-  --admin-border-light: #475569;
-  --admin-primary: #3B82F6;
-  --admin-primary-light: #60A5FA;
-  --admin-primary-dark: #2563EB;
-  --admin-primary-rgb: 59, 130, 246;
+  --admin-bg: #F8FAFC;
+  --admin-bg-alt: #F1F5F9;
+  --admin-surface: #FFFFFF;
+  --admin-surface-hover: #F1F5F9;
+  --admin-border: #E2E8F0;
+  --admin-border-light: #CBD5E1;
+  --admin-primary: #0D4F4F;
+  --admin-primary-light: #167070;
+  --admin-primary-dark: #093838;
+  --admin-primary-rgb: 13, 79, 79;
   --admin-success: #10B981;
   --admin-warning: #F59E0B;
   --admin-danger: #EF4444;
-  --admin-text: #E5E7EB;
-  --admin-text-secondary: #B0B3C0;
-  --admin-text-muted: #6B7280;
+  --admin-text: #0F172A;
+  --admin-text-secondary: #475569;
+  --admin-text-muted: #64748B;
 }
 
 /* ══════════════════════════════════════════════════════

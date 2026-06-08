@@ -133,7 +133,9 @@ export default function ScheduleClient({ initialSchedule, initialBlocked }: { in
             className="admin-btn admin-btn-ghost" 
             id="add-blocked-date"
             onClick={() => {
-              setBlocked([...blocked, { id: `new-${Date.now()}`, date: new Date().toISOString().split('T')[0], reason: '' }]);
+              const d = new Date();
+              const todayYMD = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+              setBlocked([...blocked, { id: `new-${Date.now()}`, date: todayYMD, reason: '' }]);
               setSaved(false);
             }}
           >
