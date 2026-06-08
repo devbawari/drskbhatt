@@ -120,13 +120,13 @@
   color: white;
 }
 
-.contact-social-link.linkedin {
-  background: #0A66C2;
+.contact-social-link.youtube {
+  background: #FF0000;
   color: white;
 }
 
-.contact-social-link.linkedin:hover {
-  background: #084d94;
+.contact-social-link.youtube:hover {
+  background: #CC0000;
   color: white;
 }
 
