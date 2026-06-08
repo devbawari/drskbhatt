@@ -81,11 +81,28 @@ export async function GET(request: Request) {
       return `${h}:${m}`;
     }) || [];
 
-    // 4. Format response
+    // 4. Format response and handle past times for today
+    const now = new Date();
+    const currentIstStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const currentIst = new Date(currentIstStr);
+    const todayStr = `${currentIst.getFullYear()}-${String(currentIst.getMonth() + 1).padStart(2, '0')}-${String(currentIst.getDate()).padStart(2, '0')}`;
+    const isToday = dateStr === todayStr;
+    const currentH = currentIst.getHours();
+    const currentM = currentIst.getMinutes();
+
+    const isSlotBooked = (timeStr: string) => {
+      if (bookedTimes.includes(timeStr)) return true;
+      if (isToday) {
+        const [h, m] = timeStr.split(':').map(Number);
+        if (h < currentH || (h === currentH && m <= currentM)) return true;
+      }
+      return false;
+    };
+
     const groupedSlots = [
-      { period: 'Morning', slots: slots.filter(s => s.period === 'Morning').map(s => ({ time: s.time, booked: bookedTimes.includes(s.time) })) },
-      { period: 'Afternoon', slots: slots.filter(s => s.period === 'Afternoon').map(s => ({ time: s.time, booked: bookedTimes.includes(s.time) })) },
-      { period: 'Evening', slots: slots.filter(s => s.period === 'Evening').map(s => ({ time: s.time, booked: bookedTimes.includes(s.time) })) },
+      { period: 'Morning', slots: slots.filter(s => s.period === 'Morning').map(s => ({ time: s.time, booked: isSlotBooked(s.time) })) },
+      { period: 'Afternoon', slots: slots.filter(s => s.period === 'Afternoon').map(s => ({ time: s.time, booked: isSlotBooked(s.time) })) },
+      { period: 'Evening', slots: slots.filter(s => s.period === 'Evening').map(s => ({ time: s.time, booked: isSlotBooked(s.time) })) },
     ].filter(g => g.slots.length > 0);
 
     return NextResponse.json({ groupedSlots });
