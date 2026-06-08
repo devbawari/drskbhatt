@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import {
   LayoutDashboard, CalendarDays, Users, MessageSquare, Clock,
@@ -23,6 +23,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const supabase = createClient();
@@ -62,6 +63,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           if (payload.new.recipient_id === currentUserId && payload.new.read_at && !payload.old.read_at) {
             setUnreadCount(prev => Math.max(0, prev - 1));
           }
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'appointments' },
+        () => {
+          // Whenever an appointment is created, updated, or deleted, tell Next.js to re-fetch the server data globally!
+          router.refresh();
         }
       )
       .subscribe();
