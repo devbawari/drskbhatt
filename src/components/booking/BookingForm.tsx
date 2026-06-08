@@ -235,7 +235,7 @@ export default function BookingForm({ initialPatientData, blockedDates = [] }: {
               <p>Visit our clinic for a face-to-face consultation with the doctor.</p>
               <div className="type-card-meta">
                 <span><Clock size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} />30 min</span>
-                <span>VARDAAN CLINIC, Mumbai</span>
+                <span>VARDAAN CLINIC, Lucknow</span>
               </div>
               <div className="type-card-price">₹800</div>
             </div>

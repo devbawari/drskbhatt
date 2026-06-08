@@ -86,14 +86,14 @@ export default function Footer() {
               <MapPin size={16} style={{ marginTop: '4px' }} />
               <div>
                 <strong style={{ display: 'block', color: 'var(--color-accent)', fontSize: '13px' }}>Morning Clinic (10:30AM-1:30PM)</strong>
-                <span style={{ fontSize: '13px' }}>UGF-5, Sector-F, LDA Colony, Parag Dairy Road</span>
+                <span style={{ fontSize: '13px' }}>UGF- 8, sector -k1 smriti plaza, Ashiyana, Lucknow, UP 226012</span>
               </div>
             </div>
             <div className="footer-contact-item" style={{ alignItems: 'flex-start' }}>
               <MapPin size={16} style={{ marginTop: '4px' }} />
               <div>
                 <strong style={{ display: 'block', color: 'var(--color-accent)', fontSize: '13px' }}>Evening Clinic (6:00PM-9:00PM)</strong>
-                <span style={{ fontSize: '13px' }}>UGF- 8, sector -k1 smriti plaza, Ashiyana, Lucknow, UP 226012</span>
+                <span style={{ fontSize: '13px' }}>UGF-5, Sector-F, LDA Colony, Parag Dairy Road, Lucknow, UP 226012</span>
               </div>
             </div>
           </div>

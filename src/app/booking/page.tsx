@@ -4,8 +4,13 @@ import BookingForm from '@/components/booking/BookingForm';
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata = {
-  title: 'Book Appointment | DR SK BHATT',
-  description: 'Book an in-clinic or online video consultation with DR SK BHATT, Homeopathic Doctor.',
+  title: 'Book Homeopathy Appointment',
+  description: 'Schedule an in-clinic consultation at Vardaan Homeopathy Clinic or an online telehealth video call with Dr. SK Bhatt. Book your appointment today!',
+  openGraph: {
+    title: 'Book Homeopathy Appointment | Vardaan Clinic',
+    description: 'Schedule a consultation with Dr. SK Bhatt. Offering online and offline holistic healing sessions.',
+    type: 'website',
+  }
 };
 
 export default async function BookingPage() {

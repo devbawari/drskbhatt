@@ -102,7 +102,7 @@ export function getBookingConfirmationEmail(data: {
             ${data.type === 'offline' ? `
             <div style="background: #ECFDF5; border-radius: 8px; padding: 16px; margin-top: 16px;">
               <strong style="color: #0D4F4F;">📍 Clinic Address</strong>
-              <p style="margin: 8px 0 0; font-size: 14px; color: #4A4A5A;">302, Harmony Tower, Andheri West, Mumbai, Maharashtra 400058</p>
+              <p style="margin: 8px 0 0; font-size: 14px; color: #4A4A5A;">UGF- 8, sector -k1 smriti plaza, Ashiyana, Lucknow, UP 226012</p>
             </div>
             ` : ''}
           </div>

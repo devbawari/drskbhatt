@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DR SK BHATT | Vardaan Homeopathy Clinic",
+  title: {
+    template: "%s | Vardaan Homeopathy Clinic",
+    default: "Dr. SK Bhatt | Vardaan Homeopathy Clinic Lucknow",
+  },
   description:
     "Expert homeopathic care with DR SK BHATT, BHMS, MD (Homeopathy). 26+ years of experience. Book online or in-clinic appointments. Trusted by 10,000+ patients.",
   keywords: [

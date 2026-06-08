@@ -91,7 +91,7 @@ export default function Services() {
                   <Activity size={26} />
                 </div>
                 <h3>{service.name}</h3>
-                <h5 style={{ color: 'var(--color-primary)', marginTop: '4px', marginBottom: '12px' }}>{service.subtitle}</h5>
+                <h4 style={{ color: 'var(--color-primary)', marginTop: '4px', marginBottom: '12px', fontSize: 'var(--text-sm)' }}>{service.subtitle}</h4>
                 <p>{service.description}</p>
               </div>
             );

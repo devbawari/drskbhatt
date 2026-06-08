@@ -17,8 +17,8 @@ const STATIC_TESTIMONIALS: Testimonial[] = [
   { id: '2', name: 'Sanjay Gupta', rating: 5, review: 'Very patient and explains everything in detail. Highly recommend for any chronic health issues.', avatar: null },
   { id: '3', name: 'Priya Sharma', rating: 4, review: 'The clinic is well-equipped and the online consultation option is a lifesaver for follow-ups.', avatar: null },
   { id: '4', name: 'Anjali Desai', rating: 5, review: 'My mother underwent arthritis treatment under his care. The process was smooth and recovery was fast and natural.', avatar: null },
-  { id: '5', name: 'Amit Kumar', rating: 5, review: 'Excellent doctor. He doesn\'t prescribe unnecessary tests and gives honest advice.', avatar: null },
-  { id: '6', name: 'Meena Iyer', rating: 5, review: 'I have been consulting DR SK BHATT for my chronic migraines for 3 years now. He is simply the best.', avatar: null },
+  { id: '5', name: 'Pushpa Sunori', rating: 5, review: 'Excellent doctor. He doesn\'t prescribe unnecessary tests and gives honest advice.', avatar: null },
+  { id: '6', name: 'Dev Bawari', rating: 5, review: 'I have been consulting DR SK BHATT for my chronic migraines for 3 years now. He is simply the best.', avatar: null },
 ];
 
 export default function Testimonials() {

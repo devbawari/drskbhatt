@@ -93,15 +93,26 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-.hero h1 {
+.hero h1.hero-seo-title {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.hero h2.hero-title {
   font-size: var(--text-6xl);
-  color: white;
+  font-weight: 800;
   line-height: 1.1;
+  color: white;
   margin-bottom: var(--space-6);
   animation: fadeInUp 0.6s ease-out 0.1s both;
 }
 
-.hero h1 .highlight {
+.hero h2.hero-title .highlight {
   color: var(--color-accent-light);
   position: relative;
 }

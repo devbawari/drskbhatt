@@ -54,7 +54,7 @@ export default function Contact() {
                 <Phone size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Phone</h4>
+                <h3>Phone</h3>
                 <p><a href="tel:+919876543210">+91 8808080088</a></p>
                 <p>Mon-Sat, 10:00 AM - 6:00 PM</p>
               </div>
@@ -65,7 +65,7 @@ export default function Contact() {
                 <Mail size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Email</h4>
+                <h3>Email</h3>
                 <p><a href="mailto:drskbhatt@gmail.com">drskbhatt@gmail.com</a></p>
                 <p>We reply within 24 hours</p>
               </div>
@@ -76,8 +76,8 @@ export default function Contact() {
                 <MapPin size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Morning Clinic</h4>
-                <p>UGF-5, Sector-F, LDA Colony, Parag Dairy Road<br />Lucknow, Uttar Pradesh 226012</p>
+                <h3>Morning Clinic</h3>
+                <p>UGF- 8, sector -k1 smriti plaza, Ashiyana<br />Lucknow, Uttar Pradesh 226012</p>
                 <p style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, marginTop: '6px' }}>Timing: 10:30 AM - 1:30 PM (Mon-Sat)</p>
               </div>
             </div>
@@ -87,8 +87,8 @@ export default function Contact() {
                 <MapPin size={22} />
               </div>
               <div className="contact-info-text">
-                <h4>Evening Clinic</h4>
-                <p>UGF- 8, sector -k1 smriti plaza, Ashiyana<br />Lucknow, Uttar Pradesh 226012</p>
+                <h3>Evening Clinic</h3>
+                <p>UGF-5, Sector-F, LDA Colony, Parag Dairy Road<br />Lucknow, Uttar Pradesh 226012</p>
                 <p style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, marginTop: '6px' }}>Timing: 6:00 PM - 9:00 PM (Mon-Sat)</p>
               </div>
             </div>

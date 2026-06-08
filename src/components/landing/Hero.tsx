@@ -29,10 +29,11 @@ export default function Hero() {
               Available for Appointments
             </div>
 
-            <h1>
+            <h1 className="hero-seo-title">Dr. SK Bhatt | Vardaan Homeopathy Clinic Lucknow</h1>
+            <h2 className="hero-title">
               Trusted Homeopathic Care,{' '}
               <span className="highlight">Natural Healing with Compassion</span>
-            </h1>
+            </h2>
 
             <p className="hero-description">
               Welcome to Vardaan Homeopathy Clinic, where experience, compassion, and natural healing come together to create truly personalized care. Led by Dr. SK Bhatt, a trusted name in homeopathy with over 26 years of clinical excellence, our practice is dedicated to helping patients restore wellness through safe, holistic, and result-oriented treatment.
@@ -86,8 +87,8 @@ export default function Hero() {
           <div className="hero-visual">
             <div className="hero-image-frame">
               <Image 
-                src="/images/doctor.png" 
-                alt="Dr. SK Bhatt" 
+                src="/images/dr-sk-bhatt-homeopath-lucknow.png" 
+                alt="Dr. SK Bhatt - Best Homeopathic Doctor in Lucknow at Vardaan Clinic" 
                 fill 
                 style={{ objectFit: 'cover' }} 
                 priority 

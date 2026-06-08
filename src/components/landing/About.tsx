@@ -17,10 +17,11 @@ export default function About() {
             <div className="about-image-container">
               <div className="about-image-main" style={{ padding: 0 }}>
                 <Image 
-                  src="/images/doctor-2.png" 
-                  alt="Dr. SK Bhatt" 
+                  src="/images/vardaan-homeopathy-clinic.png" 
+                  alt="Dr. SK Bhatt at Vardaan Homeopathy Clinic Lucknow" 
                   fill 
                   style={{ objectFit: 'cover' }} 
+                  loading="lazy"
                   sizes="(max-width: 768px) 100vw, 380px"
                 />
               </div>
@@ -55,7 +56,7 @@ export default function About() {
             </p>
 
             <div className="about-credentials">
-              <h4>Qualifications</h4>
+              <h3>Qualifications</h3>
               <div className="about-credential-item">
                 <GraduationCap size={16} />
                 <span>BHMS — University of Lucknow</span>
