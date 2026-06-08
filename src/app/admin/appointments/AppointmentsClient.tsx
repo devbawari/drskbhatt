@@ -127,6 +127,7 @@ export default function AppointmentsClient({ initialAppointments }: { initialApp
                     {a.status === 'confirmed' && (
                       <>
                         <button className="admin-btn admin-btn-success" title="Complete" onClick={() => handleUpdateStatus(a.id, 'completed')}><Check size={14} /></button>
+                        <button className="admin-btn admin-btn-danger" title="Cancel" onClick={() => handleUpdateStatus(a.id, 'cancelled')}><X size={14} /></button>
                         {a.type === 'online' && a.telehealth_state === 'idle' && (
                           <button 
                             className="admin-btn admin-btn-danger" 

@@ -28,8 +28,8 @@ const certificates = [
   },
   {
     id: 4,
-    title: 'Board Certification in Cardiovascular Disease',
-    issuer: 'Medical Council of India',
+    title: 'certificate of excellence',
+    issuer: 'National Homoeo Laboratry',
     year: '2010',
     image: '/images/certificates/cert-4.jpeg',
   },

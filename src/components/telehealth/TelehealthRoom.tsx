@@ -37,10 +37,7 @@ function TelehealthCall({ appointmentId, isDoctor }: { appointmentId: string, is
     await daily.leave();
     await daily.destroy();
     
-    // Only the doctor ends the session for everyone in the DB
-    if (isDoctor) {
-      await endTelehealthSession(appointmentId);
-    }
+    // Removed auto-ending session to allow rejoining if doctor leaves by mistake
     
     router.push(isDoctor ? '/admin/appointments' : '/dashboard');
   }, [daily, isDoctor, appointmentId, router]);

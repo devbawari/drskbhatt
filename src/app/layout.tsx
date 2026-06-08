@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DR SK BHATT | Cardiologist & Heart Specialist",
+  title: "DR SK BHATT | Vardaan Homeopathy Clinic",
   description:
-    "Expert cardiac care with DR SK BHATT, MBBS, MD (Cardiology). 15+ years of experience. Book online or in-clinic appointments. Trusted by 10,000+ patients.",
+    "Expert homeopathic care with DR SK BHATT, BHMS, MD (Homeopathy). 26+ years of experience. Book online or in-clinic appointments. Trusted by 10,000+ patients.",
   keywords: [
-    "cardiologist",
-    "heart specialist",
-    "cardiac care",
-    "heart doctor",
+    "homeopath",
+    "homeopathic doctor",
+    "homeopathy",
+    "doctor in lucknow",
     "online consultation",
-    "book appointment",
+    "vardaan clinic",
     "DR SK BHATT",
   ],
   authors: [{ name: "DR SK BHATT" }],
   openGraph: {
-    title: "DR SK BHATT | Cardiologist & Heart Specialist",
+    title: "DR SK BHATT | Vardaan Homeopathy Clinic",
     description:
-      "Expert cardiac care with 15+ years of experience. Book your appointment today.",
+      "Expert homeopathic care with 26+ years of experience. Book your appointment today.",
     type: "website",
     locale: "en_IN",
   },

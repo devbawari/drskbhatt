@@ -66,7 +66,7 @@ export function getBookingConfirmationEmail(data: {
         <div class="container">
           <div class="header">
             <h1>♥ VARDAAN CLINIC</h1>
-            <p>DR SK BHATT, MD (Cardiology)</p>
+            <p>DR SK BHATT, BHMS, MD (Homeopathy)</p>
           </div>
           <div class="content">
             <h2 style="color: #0D4F4F; margin-top: 0;">Booking Confirmed! ✓</h2>

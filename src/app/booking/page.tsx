@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 
 export const metadata = {
   title: 'Book Appointment | DR SK BHATT',
-  description: 'Book an in-clinic or online video consultation with DR SK BHATT, Cardiologist.',
+  description: 'Book an in-clinic or online video consultation with DR SK BHATT, Homeopathic Doctor.',
 };
 
 export default async function BookingPage() {

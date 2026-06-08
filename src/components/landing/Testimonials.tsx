@@ -13,12 +13,12 @@ type Testimonial = {
 };
 
 const STATIC_TESTIMONIALS: Testimonial[] = [
-  { id: '1', name: 'Ramesh Patel', rating: 5, review: 'DR SK BHATT saved my life. His prompt diagnosis during my mild heart attack was crucial.', avatar: null },
-  { id: '2', name: 'Sanjay Gupta', rating: 5, review: 'Very patient and explains everything in detail. Highly recommend for any cardiac issues.', avatar: null },
+  { id: '1', name: 'Ramesh Patel', rating: 5, review: 'DR SK BHATT transformed my health. His prompt and effective homeopathic treatment was life-changing.', avatar: null },
+  { id: '2', name: 'Sanjay Gupta', rating: 5, review: 'Very patient and explains everything in detail. Highly recommend for any chronic health issues.', avatar: null },
   { id: '3', name: 'Priya Sharma', rating: 4, review: 'The clinic is well-equipped and the online consultation option is a lifesaver for follow-ups.', avatar: null },
-  { id: '4', name: 'Anjali Desai', rating: 5, review: 'My mother underwent angiography under his care. The procedure was smooth and recovery was fast.', avatar: null },
+  { id: '4', name: 'Anjali Desai', rating: 5, review: 'My mother underwent arthritis treatment under his care. The process was smooth and recovery was fast and natural.', avatar: null },
   { id: '5', name: 'Amit Kumar', rating: 5, review: 'Excellent doctor. He doesn\'t prescribe unnecessary tests and gives honest advice.', avatar: null },
-  { id: '6', name: 'Meena Iyer', rating: 5, review: 'I have been consulting DR SK BHATT for my hypertension for 3 years now. He is simply the best.', avatar: null },
+  { id: '6', name: 'Meena Iyer', rating: 5, review: 'I have been consulting DR SK BHATT for my chronic migraines for 3 years now. He is simply the best.', avatar: null },
 ];
 
 export default function Testimonials() {
@@ -53,7 +53,7 @@ export default function Testimonials() {
         <div className="section-heading">
           <span className="section-label">Testimonials</span>
           <h2>What Our Patients Say</h2>
-          <p>Real stories from real patients who trust us with their heart health.</p>
+          <p>Real stories from real patients who trust us with their holistic health.</p>
         </div>
 
         <div className="testimonials-carousel">
