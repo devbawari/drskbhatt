@@ -23,7 +23,7 @@ export default async function DashboardPage() {
     .eq('patient_id', user.id)
     .order('scheduled_at', { ascending: false })
 
-  const upcoming = appointments?.filter(a => ['pending', 'confirmed'].includes(a.status)) || []
+  const upcoming = appointments?.filter(a => ['requested', 'pending_payment', 'pending', 'confirmed'].includes(a.status)) || []
   const past = appointments?.filter(a => ['completed', 'cancelled'].includes(a.status)) || []
 
   const formatDateTime = (timestamp: string) => {
@@ -45,12 +45,13 @@ export default async function DashboardPage() {
           {app.visit_type === 'virtual' ? <Video size={18} className="text-primary" /> : <MapPin size={18} className="text-primary" />}
           {app.visit_type === 'virtual' ? 'Video Consultation' : 'In-Clinic Visit'}
         </div>
-        <span className={`appointment-status status-${app.status}`} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          {app.status === 'pending' && <Hourglass size={12} />}
+        <span className={`appointment-status status-${app.status.replace('_', '-')}`} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          {(app.status === 'pending' || app.status === 'requested') && <Hourglass size={12} />}
+          {app.status === 'pending_payment' && <Hourglass size={12} />}
           {app.status === 'confirmed' && <CheckCircle2 size={12} />}
           {app.status === 'cancelled' && <XCircle size={12} />}
           {app.status === 'completed' && <CheckSquare size={12} />}
-          {app.status}
+          {app.status === 'requested' ? 'Pending Approval' : app.status === 'pending_payment' ? 'Pending Payment' : app.status}
         </span>
       </div>
       
@@ -75,7 +76,12 @@ export default async function DashboardPage() {
         {app.status === 'confirmed' && app.visit_type === 'virtual' && (
           <LiveJoinButton appointmentId={app.id} initialState={app.telehealth_state || 'idle'} roomUrl={app.room_url || ''} />
         )}
-        {['pending', 'confirmed'].includes(app.status) && (
+        {app.status === 'pending_payment' && (
+          <a href={`/appointments/${app.id}/pay`} className="join-call-btn" style={{ background: 'var(--color-primary)' }}>
+            Complete Payment
+          </a>
+        )}
+        {['requested', 'pending_payment', 'pending', 'confirmed'].includes(app.status) && (
           <CancelButton id={app.id} />
         )}
       </div>

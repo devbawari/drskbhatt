@@ -67,7 +67,7 @@ export default function PatientsClient({ initialPatients }: { initialPatients: P
               <div>
                 <div className="admin-patient-detail-label">Status</div>
                 <div style={{ fontWeight: 700, color: p.status === 'confirmed' ? 'var(--color-primary)' : 'var(--color-accent)' }}>
-                  {p.status.toUpperCase()}
+                  {p.status.replace('_', ' ').toUpperCase()}
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function PatientsClient({ initialPatients }: { initialPatients: P
                 </div>
                 <div>
                   <div style={{ color: 'var(--admin-text-muted)', fontSize: '0.875rem', marginBottom: '4px' }}>Status</div>
-                  <div style={{ fontWeight: 500, color: selectedPatient.status === 'confirmed' ? 'var(--color-primary)' : 'var(--color-accent)' }}>{selectedPatient.status.toUpperCase()}</div>
+                  <div style={{ fontWeight: 500, color: selectedPatient.status === 'confirmed' ? 'var(--color-primary)' : 'var(--color-accent)' }}>{selectedPatient.status.replace('_', ' ').toUpperCase()}</div>
                 </div>
               </div>
 

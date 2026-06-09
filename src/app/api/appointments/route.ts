@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         patient_id: user.id,
         scheduled_at: scheduledAt,
         visit_type: visitType,
-        status: 'pending',
+        status: 'requested',
         reason: data.reason || null,
         duration_minutes: 30, // hardcoded for now or from availability
         patient_name: data.patientInfo?.fullName || user.email?.split('@')[0] || 'Unknown',

@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { revalidatePath } from 'next/cache';
+import { Resend } from 'resend';
 
 export async function updateAppointmentStatus(id: string, status: string, roomUrl?: string) {
   try {
@@ -16,12 +17,34 @@ export async function updateAppointmentStatus(id: string, status: string, roomUr
       updateData.room_url = roomUrl;
     }
 
-    const { error } = await adminClient
+    const { data: appointment, error } = await adminClient
       .from('appointments')
       .update(updateData)
-      .eq('id', id);
+      .eq('id', id)
+      .select('patient_name, patient_email, scheduled_at')
+      .single();
 
     if (error) throw error;
+
+    if (status === 'pending_payment' && appointment) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      await resend.emails.send({
+        from: 'Dr. SK Bhatt <appointments@drskbhatt.in>',
+        to: appointment.patient_email,
+        subject: 'Appointment Approved - Complete Your Secure Payment',
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #0D4F4F;">Hello ${appointment.patient_name},</h2>
+            <p>Dr. SK Bhatt has accepted your appointment request for <strong>${new Date(appointment.scheduled_at).toLocaleString()}</strong>.</p>
+            <p>To securely confirm your slot and receive your consultation access, please complete your payment.</p>
+            <a href="https://drskbhatt.in/appointments/${id}/pay" style="display: inline-block; background-color: #0D4F4F; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; text-align: center;">Complete Payment</a>
+            <hr style="border: none; border-top: 1px solid #eee; margin-top: 32px; margin-bottom: 32px;" />
+            <p style="font-size: 0.85em; color: #666;">If you have any questions, please contact Vardaan Homeopathy Clinic.</p>
+          </div>
+        `
+      });
+    }
 
     revalidatePath('/admin/appointments');
     revalidatePath('/admin');
@@ -167,6 +190,23 @@ export async function startTelehealthSession(appointmentId: string) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error("Unauthorized");
 
+    const adminClient = createSupabaseClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    // Security Check: Only generate room if appointment is paid/confirmed
+    const { data: apt, error: aptError } = await adminClient
+      .from('appointments')
+      .select('status')
+      .eq('id', appointmentId)
+      .single();
+
+    if (aptError || !apt) throw new Error("Appointment not found");
+    if (apt.status !== 'confirmed') {
+      throw new Error("Cannot start telehealth session. Payment is pending or appointment is not confirmed.");
+    }
+
     const API_KEY = process.env.DAILY_API_KEY;
     if (!API_KEY) throw new Error("DAILY_API_KEY is not configured in environment variables.");
 
@@ -194,10 +234,7 @@ export async function startTelehealthSession(appointmentId: string) {
     const roomData = await roomRes.json();
     const roomUrl = roomData.url;
 
-    const adminClient = createSupabaseClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+
 
     const { error } = await adminClient
       .from('appointments')

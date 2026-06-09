@@ -16,7 +16,7 @@ export default async function PatientsPage() {
   const { data: appointments } = await adminClient
     .from('appointments')
     .select('*')
-    .in('status', ['pending', 'confirmed'])
+    .in('status', ['requested', 'pending_payment', 'confirmed'])
     .order('scheduled_at', { ascending: false });
 
   const formattedPatients = (appointments || []).map((app: any) => {

@@ -28,7 +28,7 @@ export default async function AppointmentsPage() {
       date: dt.toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
       time: dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' }),
       type: (a.visit_type === 'virtual' ? 'online' : 'offline') as 'online' | 'offline',
-      status: a.status as 'pending' | 'confirmed' | 'cancelled' | 'completed',
+      status: a.status as 'requested' | 'pending_payment' | 'confirmed' | 'cancelled' | 'completed',
       reason: a.reason || 'No reason provided',
       room_url: a.room_url || '',
       telehealth_state: a.telehealth_state || 'idle',

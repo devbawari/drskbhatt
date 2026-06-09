@@ -41,11 +41,11 @@ export default async function AdminDashboard() {
     { count: unreadMessages }
   ] = await Promise.all([
     adminClient.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'patient'),
-    adminClient.from('appointments').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
+    adminClient.from('appointments').select('*', { count: 'exact', head: true }).in('status', ['requested', 'pending_payment']),
     adminClient.from('appointments').select('*', { count: 'exact', head: true })
       .gte('scheduled_at', startOfDay.toISOString())
       .lte('scheduled_at', endOfDay.toISOString())
-      .in('status', ['confirmed', 'pending']),
+      .in('status', ['confirmed', 'requested', 'pending_payment']),
     adminClient.from('messages').select('*', { count: 'exact', head: true }).is('read_at', null).eq('recipient_id', user.id)
   ]);
 
@@ -61,7 +61,7 @@ export default async function AdminDashboard() {
   const { data: recentBookings } = await adminClient
     .from('appointments')
     .select('*')
-    .eq('status', 'pending')
+    .in('status', ['requested', 'pending_payment'])
     .order('created_at', { ascending: false })
     .limit(5);
 
@@ -149,7 +149,7 @@ export default async function AdminDashboard() {
                     </div>
                   </div>
                   <div className="admin-table-actions">
-                    <span className="admin-badge admin-badge-pending">{b.status}</span>
+                    <span className={`admin-badge admin-badge-${b.status.replace('_', '-')}`}>{b.status === 'pending_payment' ? 'pending payment' : b.status}</span>
                   </div>
                 </div>
               ))

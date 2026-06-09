@@ -12,7 +12,7 @@ type Appointment = {
   date: string;
   time: string;
   type: 'online' | 'offline';
-  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
+  status: 'requested' | 'pending_payment' | 'confirmed' | 'cancelled' | 'completed';
   reason: string;
   telehealth_state: string;
 };
@@ -114,15 +114,22 @@ export default function AppointmentsClient({ initialAppointments }: { initialApp
                     {a.type === 'online' ? <><Video size={10} style={{ marginRight: '3px' }} />Online</> : <><MapPin size={10} style={{ marginRight: '3px' }} />Offline</>}
                   </span>
                 </td>
-                <td><span className={`admin-badge admin-badge-${a.status}`}>{a.status}</span></td>
+                <td>
+                  <span className={`admin-badge admin-badge-${a.status.replace('_', '-')}`}>
+                    {a.status === 'pending_payment' ? 'Pending Payment' : a.status}
+                  </span>
+                </td>
                 <td style={{ maxWidth: '180px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.reason}</td>
                 <td>
                   <div className="admin-table-actions">
-                    {a.status === 'pending' && (
+                    {a.status === 'requested' && (
                       <>
-                        <button className="admin-btn admin-btn-success" title="Confirm" onClick={() => handleUpdateStatus(a.id, 'confirmed')}><Check size={14} /></button>
-                        <button className="admin-btn admin-btn-danger" title="Cancel" onClick={() => handleUpdateStatus(a.id, 'cancelled')}><X size={14} /></button>
+                        <button className="admin-btn admin-btn-success" title="Accept Request (Request Payment)" onClick={() => handleUpdateStatus(a.id, 'pending_payment')}><Check size={14} /></button>
+                        <button className="admin-btn admin-btn-danger" title="Reject" onClick={() => handleUpdateStatus(a.id, 'cancelled')}><X size={14} /></button>
                       </>
+                    )}
+                    {a.status === 'pending_payment' && (
+                      <button className="admin-btn admin-btn-danger" title="Cancel Request" onClick={() => handleUpdateStatus(a.id, 'cancelled')}><X size={14} /></button>
                     )}
                     {a.status === 'confirmed' && (
                       <>
