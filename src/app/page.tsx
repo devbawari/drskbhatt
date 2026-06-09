@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     siteName: 'Vardaan Homeopathy Clinic',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://www.drskbhatt.in',
+  },
 };
 
 export default function Home() {

@@ -1,7 +1,10 @@
 User-agent: *
-Allow: /
+Allow: /$
+Allow: /about
+Allow: /services
+Allow: /appointments/book
+Disallow: /auth/
 Disallow: /admin/
 Disallow: /dashboard/
-Disallow: /api/
 
-Sitemap: https://vardaanclinic.com/sitemap.xml
+Sitemap: https://www.drskbhatt.in/sitemap.xml
