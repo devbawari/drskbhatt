@@ -21,7 +21,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const [profile, setProfile] = useState<{ full_name: string; role: string } | null>(null)
+  const [profile, setProfile] = useState<{ full_name: string; role: string; email?: string } | null>(null)
   const pathname = usePathname()
   const supabase = createClient()
 
@@ -41,7 +41,9 @@ export default function DashboardLayout({
           .single()
         
         if (data) {
-          setProfile(data)
+          setProfile({ ...data, email: user.email })
+        } else {
+          setProfile({ full_name: user.user_metadata?.full_name || '', role: 'patient', email: user.email })
         }
 
         // Fetch unread count
@@ -151,10 +153,10 @@ export default function DashboardLayout({
 
         <div className="dashboard-user">
           <div className="dashboard-avatar">
-            {profile?.full_name?.charAt(0).toUpperCase() || 'P'}
+            {(profile?.full_name || profile?.email || 'P').charAt(0).toUpperCase()}
           </div>
           <div className="dashboard-user-info">
-            <span className="dashboard-user-name">{profile?.full_name || 'Patient'}</span>
+            <span className="dashboard-user-name">{profile?.full_name || profile?.email?.split('@')[0] || 'Patient'}</span>
             <span className="dashboard-user-role">Patient Portal</span>
           </div>
         </div>

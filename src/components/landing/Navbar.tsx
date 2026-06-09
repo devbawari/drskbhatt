@@ -116,7 +116,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/auth" className="btn btn-ghost" style={{ padding: '0.5rem 1rem', fontSize: '14px', color: 'rgba(255,255,255,0.7)' }}>
-                Admin Login
+                Login
               </Link>
               <Link href="/booking" className="btn btn-accent">
                 Book Appointment
