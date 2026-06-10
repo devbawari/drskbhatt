@@ -106,8 +106,8 @@ export default function DashboardLayout({
       {/* Sidebar */}
       <aside className={`dashboard-sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
         <Link href="/" className="dashboard-logo">
-          <div className="dashboard-logo-icon">
-            <Heart size={24} />
+          <div className="dashboard-logo-icon" style={{ background: 'transparent', padding: 0 }}>
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 28, height: 28 }} />
           </div>
           <span className="dashboard-logo-text">VARDAAN</span>
         </Link>

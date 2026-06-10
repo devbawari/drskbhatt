@@ -38,8 +38,8 @@ function AuthContent() {
     <div className="auth-card">
       <div className="auth-header">
         <Link href="/">
-          <div className="auth-logo">
-            <Heart size={28} />
+          <div className="auth-logo" style={{ background: 'transparent', padding: 0 }}>
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 36, height: 36 }} />
           </div>
         </Link>
         <h1 className="auth-title">Welcome to VARDAAN</h1>

@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <h3>
-              <Heart size={20} style={{ display: 'inline', marginRight: '8px', color: 'var(--color-accent)' }} fill="var(--color-accent)" />
+              <img src="/icon.png" alt="Vardaan Logo" style={{ width: 24, height: 24, display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
               Dr. SK Bhatt - Vardaan Homeopathy Clinic
             </h3>
             <p>

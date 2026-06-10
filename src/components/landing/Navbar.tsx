@@ -78,8 +78,8 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="navbar-inner">
         <Link href="/" className="navbar-logo">
-          <div className="navbar-logo-icon">
-            <Heart size={22} fill="white" />
+          <div className="navbar-logo-icon" style={{ background: 'transparent', padding: 0 }}>
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 28, height: 28 }} />
           </div>
           <div className="navbar-logo-text">
             <span className="navbar-logo-name">Dr. SK Bhatt</span>

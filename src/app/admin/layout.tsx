@@ -101,8 +101,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar */}
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="admin-sidebar-header">
-          <div className="admin-sidebar-avatar">
-            <Heart size={18} fill="white" />
+          <div className="admin-logo-icon" style={{ background: 'transparent', padding: 0 }}>
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 24, height: 24 }} />
           </div>
           <div className="admin-sidebar-info">
             <h4>Dr. SK Bhatt</h4>

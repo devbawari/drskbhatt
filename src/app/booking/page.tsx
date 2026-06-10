@@ -50,7 +50,7 @@ export default async function BookingPage() {
             Back to Home
           </Link>
           <h1>
-            <Heart size={20} fill="white" style={{ display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 24, height: 24, display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
             Book Appointment
           </h1>
           <div style={{ width: '120px' }} />

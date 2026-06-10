@@ -33,8 +33,8 @@ export default function AdminLoginPage() {
     <div className="admin-login-page">
       <div className="admin-login-card">
         <div className="admin-login-header">
-          <div className="admin-login-logo">
-            <Heart size={28} fill="white" />
+          <div className="admin-login-logo" style={{ background: 'transparent', padding: 0 }}>
+            <img src="/icon.png" alt="Vardaan Logo" style={{ width: 36, height: 36 }} />
           </div>
           <h1>Admin Panel</h1>
           <p>Sign in to manage your practice</p>
