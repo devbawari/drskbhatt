@@ -19,7 +19,11 @@ export const metadata: Metadata = {
     "Dr SK Bhatt",
   ],
   authors: [{ name: "Dr. SK Bhatt" }],
-  metadataBase: new URL("https://drskbhatt.in"), // Points to your newly configured custom domain
+  metadataBase: new URL("https://www.drskbhatt.in"), // Points to your newly configured custom domain
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   
   // 👥 Optimized Facebook & Open Graph Sharing Control
   openGraph: {
