@@ -7,6 +7,7 @@ import Services from '@/components/landing/Services';
 import Testimonials from '@/components/landing/Testimonials';
 import Contact from '@/components/landing/Contact';
 import Footer from '@/components/landing/Footer';
+import WhatsAppFloat from '@/components/landing/WhatsAppFloat';
 
 export const metadata: Metadata = {
   title: 'Homeopathic Treatment for Chronic Illnesses in Lucknow | Vardaan Clinic',
@@ -39,6 +40,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }
